@@ -1,6 +1,7 @@
 django-angular-scaffold
 =======================
 
+[![PyPI version](https://badge.fury.io/py/django-angular-scaffold.svg)](http://badge.fury.io/py/django-angular-scaffold)
 
 set of django commands to scaffold a django-angular project
 
