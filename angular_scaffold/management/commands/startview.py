@@ -1,3 +1,4 @@
+import os
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 from _generate_view import generate_view
@@ -12,5 +13,5 @@ class Command(BaseCommand):
         else:
             dir = '.'
         for view_name in args:
-            generate_view(dir, view_name)
+            generate_view(dir + os.sep + 'assets', view_name)
             self.stdout.write('Successfully initialized view "%s"' % view_name)
