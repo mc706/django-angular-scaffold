@@ -52,6 +52,8 @@ def deploy_test(release='patch'):
         bump_minor()
     elif release == 'major':
         bump_major()
+    elif release == 'none':
+        pass
     else:
         bump_patch()
     local('python setup.py register -r pypitest')
@@ -65,6 +67,8 @@ def deploy(release='patch'):
         bump_minor()
     elif release == 'major':
         bump_major()
+    elif release == 'none':
+        pass
     else:
         bump_patch()
     local('python setup.py register -r pypi')
