@@ -7,6 +7,7 @@ VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
 mo = re.search(VSRE, verstrline, re.M)
 if mo:
     verstr = mo.group(1)
+    release = "{0}.{1}".format(verstr.split('.'))
 else:
     raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
 # Setup
@@ -20,7 +21,7 @@ setup(
     packages=['angular_scaffold', 'angular_scaffold.management', 'angular_scaffold.management.commands'],
     include_package_data=True,
     description='AngularJS Scaffolding for Django',
-    download_url = 'https://github.com/mc706/django-angular-scaffold/tarball/0.1',
+    download_url = 'https://github.com/mc706/django-angular-scaffold/tarball/' + release,
     keywords = ['django', 'angular', 'scaffold'],
     classifiers = [],
 )

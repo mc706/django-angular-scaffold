@@ -63,9 +63,21 @@ def generate_assets(dir):
     if not os.path.exists(dir+'/assets'):
         os.makedirs(dir+'/assets')
     _build(_assets, dir+'/assets')
+    #setup angular application
     app_name = raw_input("Angular Application Name: ")
     with open(dir + '/assets/app/app.js','w') as app:
         app.write('var app = angular.module("%s", []);' % app_name)
+    #setup styles
+    with open(dir + '/assets/lib/styles/styles.scss', 'w') as styles:
+        styles.write('//setup\n'
+                     '@import "site/variables;\n'
+                     '@import "site/mixins";\n'
+                     '\n'
+                     '//vendor\n'
+                     '\n'
+                     '//site\n'
+                     '@import "site/global";\n')
+
 
 if __name__ == "__main__":
     generate_assets('../..')
