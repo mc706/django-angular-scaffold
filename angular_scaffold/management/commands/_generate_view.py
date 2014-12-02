@@ -12,7 +12,7 @@ def _touch(fname):
 def _build(path, pwd=None):
     current = path.pop(0)
     if pwd:
-        here = pwd + '/' + current
+        here = pwd + os.sep + current
     else:
         here = current
     if not path:
@@ -24,24 +24,24 @@ def _build(path, pwd=None):
 
 
 def generate_view(dir, name):
-    view = "app/views/" + name + ".html"
-    split = name.split('/')
+    view = "app" + os.sep + "views" + os.sep + name + ".html"
+    split = name.split(os.sep)
     namespace = split[-1]
     split[-1] = "_" + namespace + ".scss"
-    style = "lib/styles/site/" + "/".join(split)
-    _build(view.split('/'), dir)
-    _build(style.split('/'), dir)
+    style = "lib" + os.sep + "styles" + os.sep + "site" + os.sep + os.sep.join(split)
+    _build(view.split(os.sep), dir)
+    _build(style.split(os.sep), dir)
 
-    #view html file
-    with open(dir + '/' + view, 'w') as f:
+    # view html file
+    with open(dir + os.sep + view, 'w') as f:
         f.write("<div class='page %s'>\n\n</div>" % namespace)
 
-    #styles file
-    with open(dir + '/' + style, 'w') as f:
+    # styles file
+    with open(dir + os.sep + style, 'w') as f:
         f.write(".page.%s{\n\n}" % namespace)
 
     #import styles styles
-    with open(dir + '/lib/styles/styles.scss', 'a') as styles:
+    with open(dir + os.sep + 'lib' + os.sep + 'styles' + os.sep + 'styles.scss', 'a') as styles:
         styles.write('@import "site/%s";\n' % name)
 
 
