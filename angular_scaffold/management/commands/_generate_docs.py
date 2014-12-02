@@ -179,9 +179,9 @@ import the style into the main styles.scss file.
 def generate_docs(dir):
     if not os.path.exists(dir + os.sep + 'docs'):
         os.makedirs(dir + os.sep + 'docs')
-    with (open(dir + os.sep + 'docs' + os.sep + 'styling.md')) as f:
+    with (open(dir + os.sep + 'docs' + os.sep + 'styling.md', 'w')) as f:
         f.write(styling_docs)
-    with (open(dir + os.sep + 'docs' + os.sep + 'scaffold.md')) as f:
+    with (open(dir + os.sep + 'docs' + os.sep + 'scaffold.md', 'w')) as f:
         f.write(scaffolding_docs)
 
 

@@ -61,3 +61,7 @@ Can accept a path. The following are valid viewname arguments
 ```
 This will create a view file in the appropriate folder, create a mirrored scss file in the site directory, and
 import the style into the main styles.scss file.
+
+###generatedocs
+
+Adds a `/docs` folder and coppies some basic documentation into it
