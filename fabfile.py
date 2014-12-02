@@ -9,6 +9,9 @@ def bump_patch():
         patch = int(patch) + 1
     with open('angular_scaffold/_version.py', 'w') as f:
         f.write('__version__ = "%s.%s.%s"' % (major, minor, patch))
+    local('git add angular_scaffold/_version.py')
+    local('git commit -m "updated version to %s.%s.%s"'% (major, minor, patch))
+    local('git push')
 
 
 def bump_minor():
@@ -20,6 +23,8 @@ def bump_minor():
         minor = int(minor) + 1
     with open('angular_scaffold/_version.py', 'w') as f:
         f.write('__version__ = "%s.%s.%s"' % (major, minor, patch))
+    local('git add angular_scaffold/_version.py')
+    local('git commit -m "updated version to %s.%s.%s"'% (major, minor, patch))
     local('git tag %s.%s -m "Update for release"' % (major, minor))
     local('git push --tags origin master')
 
@@ -34,6 +39,8 @@ def bump_major():
         major = int(major) + 1
     with open('angular_scaffold/_version.py', 'w') as f:
         f.write('__version__ = "%s.%s.%s"' % (major, minor, patch))
+    local('git add angular_scaffold/_version.py')
+    local('git commit -m "updated version to %s.%s.%s"'% (major, minor, patch))
     local('git tag %s.%s -m "Update for release"' % (major, minor))
     local('git push --tags origin master')
 
