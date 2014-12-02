@@ -70,7 +70,7 @@ def generate_assets(dir):
     #setup styles
     with open(dir + '/assets/lib/styles/styles.scss', 'w') as styles:
         styles.write('//setup\n'
-                     '@import "site/variables;\n'
+                     '@import "site/variables";\n'
                      '@import "site/mixins";\n'
                      '\n'
                      '//vendor\n'
