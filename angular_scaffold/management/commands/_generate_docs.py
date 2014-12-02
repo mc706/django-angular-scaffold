@@ -178,7 +178,25 @@ import the style into the main styles.scss file.
 
 ###generatedocs
 
+```
+./manage.py generatedocs
+```
+
 Adds a `/docs` folder and copies some basic documentation into it
+
+###createdebugger
+
+```
+./manage.py createdebugger
+```
+
+Creates a config file for angular that overrides console.log and replaces it with
+$log.debug. Then disables $log.debug unless a query string with an encoded password
+is included.
+
+This makes it very easy to debug your application without having to expose the underlying
+to the users. It also allows you to keep your logging statements in your app when going to
+production, as they are turned off and hidden by default. 
 """
 def generate_docs(dir):
     if not os.path.exists(dir + os.sep + 'docs'):
