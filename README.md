@@ -64,4 +64,4 @@ import the style into the main styles.scss file.
 
 ###generatedocs
 
-Adds a `/docs` folder and coppies some basic documentation into it
+Adds a `/docs` folder and copies some basic documentation into it
