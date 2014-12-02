@@ -8,4 +8,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.stdout.write('Generating assets directory')
-        generate_assets('.')
+        if hasattr(settings, 'BASE_DIR'):
+            dir = settings.BASE_DIR
+        else:
+            dir = '.'
+        generate_assets(dir)
