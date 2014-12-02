@@ -196,7 +196,7 @@ is included.
 
 This makes it very easy to debug your application without having to expose the underlying
 to the users. It also allows you to keep your logging statements in your app when going to
-production, as they are turned off and hidden by default. 
+production, as they are turned off and hidden by default.
 """
 def generate_docs(dir):
     if not os.path.exists(dir + os.sep + 'docs'):
