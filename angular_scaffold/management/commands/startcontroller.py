@@ -1,17 +1,17 @@
 import os
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
-from _generate_service import generate_service
+from _generate_controller import generate_controller
 
 class Command(BaseCommand):
-    args = '<service_name>'
-    help = 'Creates a new view, adds the styles, and imports it'
+    args = '<controller_name>'
+    help = 'Creates a new controller'
 
     def handle(self, *args, **options):
         if hasattr(settings, 'BASE_DIR'):
             dir = settings.BASE_DIR
         else:
             dir = '.'
-        for service_name in args:
-            generate_service(dir, service_name)
-            self.stdout.write('Successfully initialized service "%s"' % service_name)
+        for controller_name in args:
+            generate_controller(dir, controller_name)
+            self.stdout.write('Successfully initialized service "%s"' % controller_name)

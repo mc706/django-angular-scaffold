@@ -201,11 +201,19 @@ production, as they are turned off and hidden by default.
 ###startservice
 
 ```
-./manage startservice <service_name>
+./manage.py startservice <service_name>
 ```
 
 Creates a starter service. Will ask for the endpoint, and the pluralization of the service name,
 and will create list, get, post, put, and delete methods for that service.
+
+###startcontroller
+
+```
+./manage.py startcontroller <controller_name>
+```
+
+Creates a new empty controller in controllers directory.
 """
 def generate_docs(dir):
     if not os.path.exists(dir + os.sep + 'docs'):
