@@ -121,6 +121,37 @@ This setup namespaces all of the styles and makes sure we dont need any inline s
 """
 
 scaffolding_docs = """
+django-angular-scaffold
+=======================
+
+[![PyPI version](https://badge.fury.io/py/django-angular-scaffold.svg)](http://badge.fury.io/py/django-angular-scaffold)
+
+set of django management commands to scaffold a django + angular project
+
+##Installation
+
+Install using pip
+
+```
+pip install django-angular-scaffold
+```
+
+include in your INSTALLED_APPS
+```
+#settings.py
+...
+INSTALLED_APPS = (
+    ...
+    'angular_scaffold',
+    ...
+)
+```
+
+##Commands
+
+The following are commands that are made available through this package.
+
+
 ###scaffold
 
 ```
@@ -152,7 +183,7 @@ Builds a assets folder structure in the following structure:
 
 It will prompt for an application name, this will add start the angular app off.
 
-It also automatically setups the styles.scss to import the pre stubbed out globals, mixins, and variables files.
+It also automatically setups the `styles.scss` to import the pre stubbed out globals, mixins, and variables files.
 
 The rest of the folders are stubbed out with a `.gitkeep` file to allow the directory structure to be added to git.
 

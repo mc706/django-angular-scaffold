@@ -24,6 +24,10 @@ INSTALLED_APPS = (
 )
 ```
 
+##Commands
+
+The following are commands that are made available through this package.
+
 
 ###scaffold
 
