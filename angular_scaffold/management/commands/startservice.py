@@ -5,7 +5,7 @@ from _generate_service import generate_service
 
 class Command(BaseCommand):
     args = '<service_name>'
-    help = 'Creates a new view, adds the styles, and imports it'
+    help = 'Creates a new service, adds endpoints for list, get, post, put, and delete'
 
     def handle(self, *args, **options):
         if hasattr(settings, 'BASE_DIR'):
