@@ -73,7 +73,7 @@ Adds a `/docs` folder and copies some basic documentation into it
 ###createdebugger
 
 ```
-./manage.py createdebugger
+./manage.py createdebugger <password>
 ```
 
 Creates a config file for angular that overrides console.log and replaces it with
@@ -83,3 +83,12 @@ is included.
 This makes it very easy to debug your application without having to expose the underlying 
 to the users. It also allows you to keep your logging statements in your app when going to 
 production, as they are turned off and hidden by default. 
+
+###startservice
+
+```
+./manage startservice <service_name>
+```
+
+Creates a starter service. Will ask for the endpoint, and the pluralization of the service name,
+and will create list, get, post, put, and delete methods for that service. 
