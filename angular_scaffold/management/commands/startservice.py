@@ -13,5 +13,5 @@ class Command(BaseCommand):
         else:
             dir = '.'
         for service_name in args:
-            generate_service(dir + os.sep + 'assets', service_name)
+            generate_service(dir, service_name)
             self.stdout.write('Successfully initialized service "%s"' % service_name)

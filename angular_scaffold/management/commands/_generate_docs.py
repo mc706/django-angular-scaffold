@@ -205,7 +205,7 @@ production, as they are turned off and hidden by default.
 ```
 
 Creates a starter service. Will ask for the endpoint, and the pluralization of the service name,
-and will create list, get, post, put, and delete methods for that service. 
+and will create list, get, post, put, and delete methods for that service.
 """
 def generate_docs(dir):
     if not os.path.exists(dir + os.sep + 'docs'):
