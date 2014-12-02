@@ -21,7 +21,7 @@ def generate_debugger(dir, password):
     m = hashlib.md5()
     m.update(password)
     hash = m.hexdigest()
-    file = dir + os.sep + 'assets' + os.sep + 'app' + os.sep + 'config ' + os.sep + 'logger.js'
+    file = dir + os.sep + 'assets' + os.sep + 'app' + os.sep + 'config' + os.sep + 'logger.js'
     print "Creating: " + file
     with open(file, 'w') as f:
         f.write("""app.config(function ($logProvider) {
