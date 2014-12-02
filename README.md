@@ -50,3 +50,14 @@ The rest of the folders are stubbed out with a `.gitkeep` file to allow the dire
 ```
 
 creates new view, creates new styles and adds it to the import
+
+Can accept a path. The following are valid viewname arguments
+
+```
+./manage startview homepage
+./manage startview home-page
+./manage startview ticket/new
+./manage startview settings/options/test
+```
+This will create a view file in the appropriate folder, create a mirrored scss file in the site directory, and
+import the style into the main styles.scss file.
