@@ -7,7 +7,8 @@ VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
 mo = re.search(VSRE, verstrline, re.M)
 if mo:
     verstr = mo.group(1)
-    release = "{0.0}.{0.1}".format(verstr.split('.'))
+    major, minor, patch = verstr.split('.')
+    release = "%s.%s" %(major, minor)
 else:
     raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
 # Setup
