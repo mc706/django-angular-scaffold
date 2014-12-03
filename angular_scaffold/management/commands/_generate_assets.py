@@ -60,15 +60,15 @@ def _build(assets, pwd):
 
 
 def generate_assets(dir):
-    if not os.path.exists(dir + os.sep + 'assets'):
-        os.makedirs(dir + os.sep + 'assets')
-    _build(_assets, dir + os.sep + 'assets')
+    if not os.path.exists(os.path.join(dir, 'assets')):
+        os.makedirs(os.path.join(dir, 'assets'))
+    _build(_assets, os.path.join(dir, 'assets'))
     # setup angular application
     app_name = raw_input("Angular Application Name: ")
-    with open(dir + os.sep + 'assets' + os.sep + 'app' + os.sep + 'app.js', 'w') as app:
+    with open(os.path.join(dir, 'assets', 'app', 'app.js'), 'w') as app:
         app.write('var app = angular.module("%s", []);' % app_name)
     # setup styles
-    with open(dir + os.sep + 'assets' + os.sep + 'lib' + os.sep + 'styles' + os.sep + 'styles.scss', 'w') as styles:
+    with open(os.path.join(dir, 'assets', 'lib', 'styles', 'styles.scss'), 'w') as styles:
         styles.write('//setup\n'
                      '@import "site/variables";\n'
                      '@import "site/mixins";\n'
