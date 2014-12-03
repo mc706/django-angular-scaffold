@@ -12,6 +12,8 @@ class Command(BaseCommand):
             dir = settings.BASE_DIR
         else:
             dir = '.'
+        if not args:
+            raise CommandError('Need View Name as an argument')
         for view_name in args:
-            generate_view(dir + os.sep + 'assets', view_name)
+            generate_view(os.path.join(dir, 'assets'), view_name)
             self.stdout.write('Successfully initialized view "%s"' % view_name)

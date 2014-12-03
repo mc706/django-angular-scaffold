@@ -12,6 +12,8 @@ class Command(BaseCommand):
             dir = settings.BASE_DIR
         else:
             dir = '.'
+        if not args:
+            raise CommandError('Need a service name as an argument')
         for service_name in args:
             generate_service(dir, service_name)
             self.stdout.write('Successfully initialized service "%s"' % service_name)

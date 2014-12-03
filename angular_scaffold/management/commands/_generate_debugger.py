@@ -46,7 +46,8 @@ To enable logging in the browser, pass the following query string on the end of 
 Now that logging can be enabled and disabled for debugging, make sure you provide good,
 logging via `$log.debug(message)`. This functionally replaces `console.log()`.
 """ % password
-
+    if not os.path.exists(os.path.join(directory, 'docs')):
+        os.makedirs(os.path.join(directory, 'docs'))
     with open(os.path.join(directory, 'docs', 'logging.md'), 'w') as f:
         f.write(_debugger_docs)
 
