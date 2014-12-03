@@ -11,4 +11,5 @@ def update_dependencies(directory, dependency):
         replace = str(dependencies)
         updated = data.replace(search,replace)
     with open(os.path.join(directory,'assets','app','app.js'), 'w') as f:
+        print updated
         f.write(updated)

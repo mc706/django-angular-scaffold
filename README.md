@@ -130,3 +130,12 @@ Creates a new empty controller in controllers directory.
 ```
 
 Adds the csrf token to your angular ajax headers in a config file. Also injects the `ngCookies` dependency into your app.
+
+###startroutes
+
+```
+./manage.py startroutes
+```
+
+Adds a routes config file and inject ngRoute as a dependency. 
+Creates a defaulted route to `/` using `HomeController` and `views/home.html`.
