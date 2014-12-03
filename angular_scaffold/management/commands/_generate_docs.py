@@ -245,6 +245,14 @@ and will create list, get, post, put, and delete methods for that service.
 ```
 
 Creates a new empty controller in controllers directory.
+
+###createcsrf
+
+```
+./manage.py createcsrf
+```
+
+Adds the csrf token to your angular ajax headers in a config file. Also injects the `ngCookies` dependency into your app.
 """
 def generate_docs(dir):
     if not os.path.exists(dir + os.sep + 'docs'):
