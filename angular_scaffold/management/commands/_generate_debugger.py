@@ -1,27 +1,11 @@
 import os
 import hashlib
 
-_debugger_docs = """querystring = (window.location.search ? window.location.search.substring(1) :
-                window.location.hash.indexOf('?') !== -1 ? window.location.hash.split('?')[1] : ""),
-        params = {};
-    angular.forEach(querystring.split('&'), function (pair) {
-        params[pair.split('=')[0]] = pair.split('=')[1];
-    });
-    $logProvider.debugEnabled(false);
-    if (params.hasOwnProperty('debug') && params.hasOwnProperty('password')) {
-        if (params.debug && md5(params.password) === password) {
-            $logProvider.debugEnabled(true);
-            console.info("Logging Enabled");
-            console.log = function () {};
-        }
-    }
-"""
-
-def generate_debugger(dir, password):
+def generate_debugger(directory, password):
     m = hashlib.md5()
     m.update(password)
     hash = m.hexdigest()
-    file = dir + os.sep + 'assets' + os.sep + 'app' + os.sep + 'config' + os.sep + 'logger.js'
+    file = os.path.join(directory, 'assets', 'app', 'config', 'logger.js')
     print "Creating: " + file
     with open(file, 'w') as f:
         f.write("""app.config(function ($logProvider) {
@@ -63,7 +47,7 @@ Now that logging can be enabled and disabled for debugging, make sure you provid
 logging via `$log.debug(message)`. This functionally replaces `console.log()`.
 """ % password
 
-    with open(dir + os.sep + 'docs' + os.sep + 'logging.md', 'w') as f:
+    with open(os.path.join(directory, 'docs', 'logging.md'), 'w') as f:
         f.write(_debugger_docs)
 
 

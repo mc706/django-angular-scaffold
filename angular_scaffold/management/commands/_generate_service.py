@@ -57,12 +57,12 @@ _endpoints = [
 
 ]
 
-def generate_service(dir, name):
+def generate_service(directory, name):
     url = raw_input("Endpoint URL: ")
     endpoints = []
-    plural = raw_input("Plural: ")
-    service = "app" + os.sep + "services" + os.sep + name.lower() + "Service.js"
-    with open(dir + os.sep + 'assets' + os.sep + service, 'w') as f:
+    plural = raw_input("Plural Form: ")
+    service = os.path.join("app", "services" , name.lower() + "Service.js")
+    with open(os.path.join(directory, 'assets', service), 'w') as f:
         f.write("""app.service('%sService', function ($http, $q) {
     'use strict';
     return {

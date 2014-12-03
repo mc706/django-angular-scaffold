@@ -43,7 +43,7 @@ assets/app/
     |
     + - config
     + - controllers
-    + - directives
+    + - directoryectives
     + - services
     + - views
     |       |
@@ -81,7 +81,7 @@ assets/lib/styles/
     |       + - _mixins.scss
     + styles.scss
 ```
-WHich would result in a styles.scss that looks a little bit like this
+Which would result in a styles.scss that looks a little bit like this
 ```
 //vendor sytles
 ...
@@ -115,9 +115,9 @@ and each site _home.scss file should look like this
     }
 }
 ```
-The DOM structure of the page should match the heirachical structure of the scss file.
+The DOM structure of the page should match the hierarchical structure of the scss file.
 
-This setup namespaces all of the styles and makes sure we dont need any inline styles anywhere. It also makes it very easy to write styles for the whole app and handle all the exceptions very easily.
+This setup namespaces all of the styles and makes sure we don't need any inline styles anywhere. It also makes it very easy to write styles for the whole app and handle all the exceptions very easily.
 """
 
 scaffolding_docs = """
@@ -254,12 +254,12 @@ Creates a new empty controller in controllers directory.
 
 Adds the csrf token to your angular ajax headers in a config file. Also injects the `ngCookies` dependency into your app.
 """
-def generate_docs(dir):
-    if not os.path.exists(dir + os.sep + 'docs'):
-        os.makedirs(dir + os.sep + 'docs')
-    with (open(dir + os.sep + 'docs' + os.sep + 'styling.md', 'w')) as f:
+def generate_docs(directory):
+    if not os.path.exists(os.path.join(directory, 'docs')):
+        os.makedirs(os.path.join(directory, 'docs'))
+    with (open(os.path.join(directory, 'docs', 'styling.md'), 'w')) as f:
         f.write(styling_docs)
-    with (open(dir + os.sep + 'docs' + os.sep + 'scaffold.md', 'w')) as f:
+    with (open(os.path.join(directory, 'docs', 'scaffold.md'), 'w')) as f:
         f.write(scaffolding_docs)
 
 
