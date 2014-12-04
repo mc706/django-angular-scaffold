@@ -44,7 +44,7 @@ def generate_view(directory, name=None):
 
     #import styles styles
     with open(os.path.join(directory, 'lib', 'styles', 'styles.scss'), 'a') as styles:
-        styles.write('@import "site/%s";\n' % name)
+        styles.write('\n@import "site/%s";' % name)
 
 
 if __name__ == "__main__":
