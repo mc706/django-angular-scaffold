@@ -23,7 +23,9 @@ def _build(path, pwd=None):
         _build(path, here)
 
 
-def generate_view(directory, name):
+def generate_view(directory, name=None):
+    if not name:
+        name = raw_input('View Name: ')
     view = os.path.join("app", "views", name + ".html")
     split = name.split(os.sep)
     namespace = split[-1]
