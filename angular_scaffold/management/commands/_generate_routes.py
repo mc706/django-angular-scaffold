@@ -8,7 +8,8 @@ _routes = """app.config(function ($routeProvider) {
             controller: 'HomeController',
             templateUrl: '../app/views/home.html',
             resolve: {}
-        }).otherwise({redirectTo: '/'});
+        })
+        .otherwise({redirectTo: '/'});
 });"""
 
 
