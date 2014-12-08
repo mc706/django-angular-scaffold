@@ -13,7 +13,10 @@ class Command(BaseCommand):
         else:
             dir = '.'
         if not args:
-            raise CommandError('Need a controller name as an argument')
-        for controller_name in args:
+            controller_name = raw_input("Name of the controller: ")
             generate_controller(dir, controller_name)
             self.stdout.write('Successfully initialized controller "%s"' % controller_name)
+        else:
+            for controller_name in args:
+                generate_controller(dir, controller_name)
+                self.stdout.write('Successfully initialized controller "%s"' % controller_name)
