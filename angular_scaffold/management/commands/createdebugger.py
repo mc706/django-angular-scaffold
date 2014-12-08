@@ -8,12 +8,14 @@ class Command(BaseCommand):
     help = 'Adds a debugger config that overrides console log with angular.$log'
 
     def handle(self, *args, **options):
+        self.stdout.write('Generating debugger')
+        if hasattr(settings, 'BASE_DIR'):
+            path = settings.BASE_DIR
+        else:
+            path = '.'
         if not args:
-            raise CommandError('Need to add a password argument')
-        for password in args:
-            self.stdout.write('Generating debugger')
-            if hasattr(settings, 'BASE_DIR'):
-                path = settings.BASE_DIR
-            else:
-                path = '.'
+            password = raw_input("Password: ")
             generate_debugger(path, password)
+        else:
+            for password in args:
+                generate_debugger(path, password)
