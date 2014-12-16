@@ -1,7 +1,10 @@
 django-angular-scaffold
 =======================
 
+[![Build Status](https://travis-ci.org/mc706/django-angular-scaffold.svg?branch=master)](https://travis-ci.org/mc706/django-angular-scaffold)
 [![PyPI version](https://badge.fury.io/py/django-angular-scaffold.svg)](http://badge.fury.io/py/django-angular-scaffold)
+[![Code Health](https://landscape.io/github/mc706/django-angular-scaffold/master/landscape.svg)](https://landscape.io/github/mc706/django-angular-scaffold/master)
+[![Coverage Status](https://img.shields.io/coveralls/mc706/django-angular-scaffold.svg)](https://coveralls.io/r/mc706/django-angular-scaffold)
 
 set of django management commands to scaffold a django + angular project
 
