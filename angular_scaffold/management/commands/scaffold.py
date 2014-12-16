@@ -10,14 +10,14 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.stdout.write('Generating assets directory')
         if hasattr(settings, 'BASE_DIR'):
-            dir = settings.BASE_DIR
+            directory = settings.BASE_DIR
         else:
-            dir = '.'
-        generate_assets(dir)
+            directory = '.'
+        generate_assets(directory)
         if not settings.STATICFILES_DIRS:
             settings_module = settings.SETTINGS_MODULE
             settings_file = settings_module.replace('.', '/') + '.py'
-            with open(dir + '/' + settings_file, 'a') as conf:
+            with open(directory + '/' + settings_file, 'a') as conf:
                 if not settings.BASE_DIR:
                     conf.write("BASE_DIR = os.path.dirname(os.path.dirname(__file__))\n")
                 conf.write('STATICFILES_DIRS = (BASE_DIR + "/assets",)')
