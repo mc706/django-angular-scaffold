@@ -51,7 +51,7 @@ def _touch(fname):
 
 def _build(assets, pwd):
     for child in assets:
-        if (type(assets[child]) is str):
+        if type(assets[child]) is str:
             _touch(pwd + os.sep + assets[child])
         else:
             if not os.path.exists(child):
@@ -78,10 +78,3 @@ def generate_assets(directory, app_name=None):
                      '\n'
                      '//site\n'
                      '@import "site/global";\n')
-
-
-if __name__ == "__main__":
-    generate_assets('../..')
-
-
-
