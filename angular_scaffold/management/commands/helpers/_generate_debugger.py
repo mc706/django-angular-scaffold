@@ -4,10 +4,10 @@ import hashlib
 def generate_debugger(directory, password):
     m = hashlib.md5()
     m.update(password)
-    hash = m.hexdigest()
-    file = os.path.join(directory, 'assets', 'app', 'config', 'logger.js')
-    print "Creating: " + file
-    with open(file, 'w') as f:
+    password_hash = m.hexdigest()
+    logger_file = os.path.join(directory, 'assets', 'app', 'config', 'logger.js')
+    print "Creating: " + logger_file
+    with open(logger_file, 'w') as f:
         f.write("""app.config(function ($logProvider) {
     "use strict";
     //Enables debug when ?debug=1&password=*password*
@@ -27,7 +27,7 @@ def generate_debugger(directory, password):
         }
     }
 });
-""" % hash)
+""" % password_hash)
     _debugger_docs = """#Logging
 
 The logs of this project are using angular's `$logProvider` service. By default
@@ -50,10 +50,3 @@ logging via `$log.debug(message)`. This functionally replaces `console.log()`.
         os.makedirs(os.path.join(directory, 'docs'))
     with open(os.path.join(directory, 'docs', 'logging.md'), 'w') as f:
         f.write(_debugger_docs)
-
-
-
-
-
-
-
