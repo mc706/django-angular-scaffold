@@ -19,5 +19,5 @@ class ScaffoldTest(unittest.TestCase):
         self.assertTrue(os.path.exists(os.path.join(self.BASE_DIR,'assets','lib')))
 
     def tearDown(self):
-        shutil.rmtree(os.path.join(self.BASE_DIR), 'assets')
+        shutil.rmtree(os.path.join(self.BASE_DIR, 'assets'))
 
