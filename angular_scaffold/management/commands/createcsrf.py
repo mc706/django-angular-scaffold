@@ -1,6 +1,7 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.conf import settings
-from _generate_csrf import generate_csrf
+
+from angular_scaffold.management.commands.helpers._generate_csrf import generate_csrf
 
 
 class Command(BaseCommand):

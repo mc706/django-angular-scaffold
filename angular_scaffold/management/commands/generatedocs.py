@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.conf import settings
-from _generate_docs import generate_docs
+
+from angular_scaffold.management.commands.helpers._generate_docs import generate_docs
 
 
 class Command(BaseCommand):

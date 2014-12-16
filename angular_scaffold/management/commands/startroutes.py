@@ -1,6 +1,7 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.conf import settings
-from _generate_routes import generate_routes
+
+from angular_scaffold.management.commands.helpers._generate_routes import generate_routes
 
 
 class Command(BaseCommand):

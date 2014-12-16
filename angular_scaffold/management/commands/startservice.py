@@ -1,7 +1,8 @@
-import os
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.conf import settings
-from _generate_service import generate_service
+
+from angular_scaffold.management.commands.helpers._generate_service import generate_service
+
 
 class Command(BaseCommand):
     args = '<service_name>'

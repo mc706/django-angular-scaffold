@@ -1,5 +1,7 @@
 import os
-from _update_dependencies import update_dependencies
+
+from angular_scaffold.management.commands.helpers._update_dependencies import update_dependencies
+
 
 _csrf = """app.run(function ($http, $cookies) {
     "use strict";

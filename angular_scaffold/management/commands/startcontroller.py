@@ -1,7 +1,8 @@
-import os
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.conf import settings
-from _generate_controller import generate_controller
+
+from angular_scaffold.management.commands.helpers._generate_controller import generate_controller
+
 
 class Command(BaseCommand):
     args = '<controller_name>'

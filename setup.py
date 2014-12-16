@@ -19,7 +19,7 @@ setup(
     author='Ryan McDevitt',
     author_email='mcdevitt.ryan@gmail.com',
     license='MIT License',
-    packages=['angular_scaffold', 'angular_scaffold.management', 'angular_scaffold.management.commands'],
+    packages=['angular_scaffold', 'angular_scaffold.management', 'angular_scaffold.management.commands', 'angular_scaffold.management.commands.helpers'],
     include_package_data=True,
     description='AngularJS Scaffolding for Django',
     download_url = 'https://github.com/mc706/django-angular-scaffold/tarball/' + release,

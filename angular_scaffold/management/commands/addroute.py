@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.conf import settings
 
-from _add_route import add_route
+from angular_scaffold.management.commands.helpers._add_route import add_route
 
 
 class Command(BaseCommand):

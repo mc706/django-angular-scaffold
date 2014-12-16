@@ -1,6 +1,7 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.conf import settings
-from _generate_debugger import generate_debugger
+
+from angular_scaffold.management.commands.helpers._generate_debugger import generate_debugger
 
 
 class Command(BaseCommand):

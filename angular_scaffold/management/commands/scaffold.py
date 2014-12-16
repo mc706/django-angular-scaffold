@@ -1,7 +1,8 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.conf import settings
 
-from _generate_assets import generate_assets
+from angular_scaffold.management.commands.helpers._generate_assets import generate_assets
+
 
 class Command(BaseCommand):
     help = 'Adds basic structure to basic application'
