@@ -45,7 +45,7 @@ _assets = {
 def _touch(fname):
     try:
         os.utime(fname, None)
-    except:
+    except Exception:
         open(fname, 'a').close()
 
 
@@ -59,16 +59,17 @@ def _build(assets, pwd):
             _build(assets[child], pwd + os.sep + child)
 
 
-def generate_assets(dir):
-    if not os.path.exists(os.path.join(dir, 'assets')):
-        os.makedirs(os.path.join(dir, 'assets'))
-    _build(_assets, os.path.join(dir, 'assets'))
+def generate_assets(directory, app_name=None):
+    if not os.path.exists(os.path.join(directory, 'assets')):
+        os.makedirs(os.path.join(directory, 'assets'))
+    _build(_assets, os.path.join(directory, 'assets'))
     # setup angular application
-    app_name = raw_input("Angular Application Name: ")
-    with open(os.path.join(dir, 'assets', 'app', 'app.js'), 'w') as app:
+    if not app_name:
+        app_name = raw_input("Angular Application Name: ")
+    with open(os.path.join(directory, 'assets', 'app', 'app.js'), 'w') as app:
         app.write('var app = angular.module("%s", []);' % app_name)
     # setup styles
-    with open(os.path.join(dir, 'assets', 'lib', 'styles', 'styles.scss'), 'w') as styles:
+    with open(os.path.join(directory, 'assets', 'lib', 'styles', 'styles.scss'), 'w') as styles:
         styles.write('//setup\n'
                      '@import "site/variables";\n'
                      '@import "site/mixins";\n'

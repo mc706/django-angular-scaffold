@@ -55,3 +55,4 @@ target/
 
 #testing
 angular_scaffold/assets
+angular_scaffold/tests/assets
