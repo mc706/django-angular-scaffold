@@ -1,5 +1,3 @@
-import os
-
 from django.core.management.base import BaseCommand
 from django.conf import settings
 
@@ -12,14 +10,14 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if hasattr(settings, 'BASE_DIR'):
-            dir = settings.BASE_DIR
+            directory = settings.BASE_DIR
         else:
-            dir = '.'
+            directory = '.'
         if not args:
             view_name = raw_input("View Name: ")
-            generate_view(os.path.join(dir, 'assets'), view_name)
+            generate_view(directory, view_name)
             self.stdout.write('Successfully initialized view "%s"' % view_name)
         else:
             for view_name in args:
-                generate_view(os.path.join(dir, 'assets'), view_name)
+                generate_view(directory, view_name)
                 self.stdout.write('Successfully initialized view "%s"' % view_name)

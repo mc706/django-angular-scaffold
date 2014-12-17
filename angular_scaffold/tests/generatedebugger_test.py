@@ -13,7 +13,7 @@ class GenerateDebuggerTest(unittest.TestCase):
             shutil.rmtree(os.path.join(self.BASE_DIR, 'assets'))
         generate_assets(self.BASE_DIR, 'test-app')
 
-    def test_scaffold(self):
+    def test_debugger(self):
         generate_debugger(self.BASE_DIR, 'Password1')
         self.assertTrue(os.path.exists(os.path.join(self.BASE_DIR, 'assets', 'app', 'config', 'logger.js')))
         self.assertTrue(os.path.exists(os.path.join(self.BASE_DIR, 'docs', 'logging.md')))

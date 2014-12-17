@@ -26,11 +26,11 @@ def _build(path, pwd=None):
 def generate_view(directory, name=None):
     if not name:
         name = raw_input('View Name: ')
-    view = os.path.join("app", "views", name + ".html")
+    view = os.path.join("assets", "app", "views", name + ".html")
     split = name.split(os.sep)
     namespace = split[-1]
     split[-1] = "_" + namespace + ".scss"
-    style = os.path.join("lib", "styles", "site", os.sep.join(split))
+    style = os.path.join("assets", "lib", "styles", "site", os.sep.join(split))
     _build(view.split(os.sep), directory)
     _build(style.split(os.sep), directory)
 
@@ -42,15 +42,15 @@ def generate_view(directory, name=None):
     with open(os.path.join(directory, style), 'w') as f:
         f.write(".page.%s{\n\n}" % namespace)
 
-    #import styles styles
-    with open(os.path.join(directory, 'lib', 'styles', 'styles.scss'), 'a') as styles:
+    # import styles styles
+    with open(os.path.join(directory, 'assets', 'lib', 'styles', 'styles.scss'), 'a') as styles:
         styles.write('\n@import "site/%s";' % name)
 
 
 if __name__ == "__main__":
-    generate_view('../../assets', 'homepage')
-    generate_view('../../assets', 'settings/permissions')
-    generate_view('../../assets', 'user/settings/new')
+    generate_view('../..', 'homepage')
+    generate_view('../..', 'settings/permissions')
+    generate_view('../..', 'user/settings/new')
 
 
 
