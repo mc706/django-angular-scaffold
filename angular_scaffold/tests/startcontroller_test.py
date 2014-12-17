@@ -19,7 +19,6 @@ class StartControllerTest(unittest.TestCase):
             os.path.exists(os.path.join(self.BASE_DIR, 'assets', 'app', 'controllers', 'homeController.js')))
         with open(os.path.join(self.BASE_DIR, 'assets', 'app', 'controllers', 'homeController.js'), 'r') as js:
             controller = js.read()
-            print controller
             self.assertTrue('app.controller("HomeController",' in controller)
 
 

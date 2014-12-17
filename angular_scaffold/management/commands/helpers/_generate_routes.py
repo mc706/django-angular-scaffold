@@ -22,16 +22,3 @@ def generate_routes(directory):
         f.write(_routes)
     print "Injecting route dependency"
     update_dependencies(directory, 'ngRoute')
-
-if __name__ == '__main__':
-    generate_routes('../..')
-
-
-
-
-
-
-
-
-
-
