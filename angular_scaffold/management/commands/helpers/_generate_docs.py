@@ -117,7 +117,8 @@ and each site _home.scss file should look like this
 ```
 The DOM structure of the page should match the hierarchical structure of the scss file.
 
-This setup namespaces all of the styles and makes sure we don't need any inline styles anywhere. It also makes it very easy to write styles for the whole app and handle all the exceptions very easily.
+This setup namespaces all of the styles and makes sure we don't need any inline styles anywhere. It also makes it very
+easy to write styles for the whole app and handle all the exceptions very easily.
 """
 def generate_docs(directory):
     if not os.path.exists(os.path.join(directory, 'docs')):
