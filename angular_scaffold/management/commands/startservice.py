@@ -10,14 +10,13 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if hasattr(settings, 'BASE_DIR'):
-            dir = settings.BASE_DIR
+            directory = settings.BASE_DIR
         else:
-            dir = '.'
+            directory = '.'
         if not args:
-            service_name = raw_input('Name of Service:' )
-            generate_service(dir, service_name)
-            self.stdout.write('Successfully initialized service "%s"' % service_name)
+            generate_service(directory)
+            print 'Successfully initialized service'
         else:
             for service_name in args:
-                generate_service(dir, service_name)
-                self.stdout.write('Successfully initialized service "%s"' % service_name)
+                generate_service(directory, service_name)
+                print 'Successfully initialized service "%s"' % service_name

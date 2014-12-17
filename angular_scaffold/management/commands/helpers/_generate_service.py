@@ -19,7 +19,7 @@ _endpoints = [
         'method': 'GET',
         'args': None,
         'ext': None,
-        'data':None,
+        'data': None,
         'plural': True
     },
     {
@@ -27,7 +27,7 @@ _endpoints = [
         'method': 'GET',
         'args': 'id',
         'ext': ' + id + "/"',
-        'data':None,
+        'data': None,
         'plural': False
     },
     {
@@ -57,11 +57,16 @@ _endpoints = [
 
 ]
 
-def generate_service(directory, name):
-    url = raw_input("Endpoint URL: ")
+
+def generate_service(directory, name=None, url=None, plural=None):
+    if not name:
+        name = raw_input("Service Name: ")
+    if not url:
+        url = raw_input("Endpoint URL: ")
+    if not plural:
+        plural = raw_input("Plural Form: ")
     endpoints = []
-    plural = raw_input("Plural Form: ")
-    service = os.path.join("app", "services" , name.lower() + "Service.js")
+    service = os.path.join("app", "services", name.lower() + "Service.js")
     with open(os.path.join(directory, 'assets', service), 'w') as f:
         f.write("""app.service('%sService', function ($http, $q) {
     'use strict';
@@ -84,23 +89,16 @@ def generate_service(directory, name):
             if method['plural']:
                 title = plural.title()
             serv = _template.substitute(
-                name = method['name'],
-                title = title,
-                args = arguments,
-                method = method['method'],
-                url = url,
-                ext = extensions,
-                dataline = dataline
+                name=method['name'],
+                title=title,
+                args=arguments,
+                method=method['method'],
+                url=url,
+                ext=extensions,
+                dataline=dataline
             )
             endpoints.append(serv)
         f.write(',\n'.join(endpoints))
         f.write("""\n
     };
 });""")
-
-
-if __name__ == "__main__":
-    generate_service('../..', 'category')
-
-
-
