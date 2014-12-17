@@ -4,7 +4,7 @@ import os
 def _touch(fname):
     try:
         os.utime(fname, None)
-    except:
+    except Exception:
         open(fname, 'a').close()
     return fname
 
@@ -45,12 +45,3 @@ def generate_view(directory, name=None):
     # import styles styles
     with open(os.path.join(directory, 'assets', 'lib', 'styles', 'styles.scss'), 'a') as styles:
         styles.write('\n@import "site/%s";' % name)
-
-
-if __name__ == "__main__":
-    generate_view('../..', 'homepage')
-    generate_view('../..', 'settings/permissions')
-    generate_view('../..', 'user/settings/new')
-
-
-
