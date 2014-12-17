@@ -6,7 +6,7 @@ from angular_scaffold.management.commands.helpers._generate_assets import genera
 from angular_scaffold.management.commands.helpers._generate_view import generate_view
 
 
-class GenerateViewTest(unittest.TestCase):
+class StartViewTest(unittest.TestCase):
     def setUp(self):
         self.BASE_DIR = os.path.dirname(__file__)
         if os.path.exists(os.path.join(self.BASE_DIR, 'assets')):
@@ -19,10 +19,7 @@ class GenerateViewTest(unittest.TestCase):
         self.assertTrue(os.path.exists(os.path.join(self.BASE_DIR, 'assets', 'lib', 'styles', 'site', '_home.scss')))
         with open(os.path.join(self.BASE_DIR, 'assets', 'lib', 'styles', 'styles.scss'), 'r') as scss:
             styles = scss.read()
-            print styles
             self.assertTrue('@import "site/home"' in styles)
-
 
     def tearDown(self):
         shutil.rmtree(os.path.join(self.BASE_DIR, 'assets'))
-
