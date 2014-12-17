@@ -16,16 +16,3 @@ def generate_csrf(directory):
         f.write(_csrf)
     print "Injecting cookie dependency"
     update_dependencies(directory, 'ngCookies')
-
-if __name__ == '__main__':
-    generate_csrf('../..')
-
-
-
-
-
-
-
-
-
-
