@@ -142,3 +142,12 @@ Adds the csrf token to your angular ajax headers in a config file. Also injects 
 
 Adds a routes config file and inject ngRoute as a dependency. 
 Creates a defaulted route to `/` using `HomeController` and `views/home.html`.
+
+###createlimiter
+
+```
+./manage.py createlimiter
+```
+
+Adds a runtime config that gives access to a `$rootScope.checkLimiter()` function that you can use in services
+to limit the number of calls made. 
