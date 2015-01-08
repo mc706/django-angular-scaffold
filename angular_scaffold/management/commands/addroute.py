@@ -8,7 +8,7 @@ class Command(BaseCommand):
     help = 'Adds a route'
 
     def handle(self, *args, **options):
-        self.stdout.write('Generating assets directory')
+        self.stdout.write('Generating routes config')
         if hasattr(settings, 'BASE_DIR'):
             directory = settings.BASE_DIR
         else:

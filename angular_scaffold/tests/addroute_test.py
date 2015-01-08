@@ -16,14 +16,15 @@ class AddRouteTest(unittest.TestCase):
         generate_routes(self.BASE_DIR)
 
     def test_view(self):
-        add_route(self.BASE_DIR, '/', 'HomeController', 'views/home.html', [])
+        add_route(self.BASE_DIR, '/', 'HomeController', 'home.html', [])
         self.assertTrue(
             os.path.exists(os.path.join(self.BASE_DIR, 'assets', 'app', 'config', 'routes.js')))
         with open(os.path.join(self.BASE_DIR, 'assets', 'app', 'config', 'routes.js'), 'r') as js:
             routes = js.read()
+            print routes
             self.assertTrue('app.config(function ($routeProvider) {' in routes)
             self.assertTrue("controller: 'HomeController'," in routes)
-            self.assertTrue("templateUrl: 'views/home.html'" in routes)
+            self.assertTrue("templateUrl: '/static/app/views/home.html'" in routes)
 
     def tearDown(self):
         shutil.rmtree(os.path.join(self.BASE_DIR, 'assets'))

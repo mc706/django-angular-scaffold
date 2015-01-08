@@ -25,7 +25,8 @@ def add_route(directory, when=None, controller=None, template=None, resolves=Non
     if not controller:
         controller = raw_input("Controller: ")
     if not template:
-        template = raw_input("Template: ")
+        template = raw_input("Template (relative to views folder): ")
+    template = '/static/app/views/' + template
     if resolves is None:
         resolve_input = True
         resolves = []
