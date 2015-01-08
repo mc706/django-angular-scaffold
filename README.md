@@ -143,6 +143,14 @@ Adds the csrf token to your angular ajax headers in a config file. Also injects 
 Adds a routes config file and inject ngRoute as a dependency. 
 Creates a defaulted route to `/` using `HomeController` and `views/home.html`.
 
+###addroute
+
+```
+./manage.py addroute
+```
+
+Adds a route to the routes. Will prompt for url, controller, views, and a number of variables to resolve. 
+
 ###createlimiter
 
 ```
