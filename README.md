@@ -150,6 +150,10 @@ Creates a defaulted route to `/` using `HomeController` and `views/home.html`.
 ```
 
 Adds a route to the routes. Will prompt for url, controller, views, and a number of variables to resolve. 
+* `when:` - put in the url in angular notation for this route  example: `/tickets/:ticket/edit/`
+* `controller:` - full name of the controller example: `TicketController`
+* `view: ` - path relative to the views folder to the html template example: `tickets/ticket.html`
+* `resolve` - name of variable to resolve into controller
 
 ###createlimiter
 
