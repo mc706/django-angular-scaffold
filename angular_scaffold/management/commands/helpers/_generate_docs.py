@@ -125,7 +125,16 @@ def generate_docs(directory):
         os.makedirs(os.path.join(directory, 'docs'))
     with (open(os.path.join(directory, 'docs', 'styling.md'), 'w')) as f:
         f.write(styling_docs)
-    with open(os.path.join(os.path.dirname(__file__),'..','..','..','..','README.md'), 'r') as fin:
+    current_path = os.path.dirname(__file__)
+    components = current_path.split(os.sep)
+    root = components[:-4]
+    root.append('README.md')
+    readme = os.sep + os.path.join(*root)
+    with open(readme, 'r') as fin:
         scaffolding_docs = fin.read()
     with (open(os.path.join(directory, 'docs', 'scaffold.md'), 'w')) as f:
         f.write(scaffolding_docs)
+
+
+if __name__ == '__main__':
+    generate_docs('../..')
