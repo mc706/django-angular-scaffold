@@ -1,5 +1,3 @@
-import shutil
-
 from fabric.api import local, settings
 
 
@@ -49,8 +47,12 @@ def bump_major():
 
 def update_generated_docs():
     with settings(warn_only=True):
-        shutil.copyfile('README.md', 'angular_scaffold/README.md')
-        local('git add angular_scaffold/README.md')
+        with open("README.md", 'r') as readme, open('angular_scaffold/_docs.py', 'w') as docs:
+            documentation = readme.read()
+            docs.write('docs = """')
+            docs.write(documentation)
+            docs.write('"""')
+        local('git add angular_scaffold/_docs.py')
         local('git commit -m "updated generated docs"')
 
 
