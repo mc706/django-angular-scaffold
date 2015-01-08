@@ -1,4 +1,6 @@
-from fabric.api import local
+import shutil
+
+from fabric.api import local, settings
 
 
 def bump_patch():
@@ -45,7 +47,15 @@ def bump_major():
     local('git push --tags origin master')
 
 
+def update_generated_docs():
+    with settings(warn_only=True):
+        shutil.copyfile('README.md', 'angular_scaffold/README.md')
+        local('git add angular_scaffold/README.md')
+        local('git commit -m "updated generated docs"')
+
+
 def deploy_test(release='patch'):
+    update_generated_docs()
     if release == 'patch':
         bump_patch()
     elif release == 'minor':
@@ -61,6 +71,7 @@ def deploy_test(release='patch'):
 
 
 def deploy(release='patch'):
+    update_generated_docs()
     if release == 'patch':
         bump_patch()
     elif release == 'minor':
