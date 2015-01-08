@@ -28,8 +28,9 @@ def generate_view(directory, name=None):
         name = raw_input('View Name: ')
     view = os.path.join("assets", "app", "views", name + ".html")
     split = name.split(os.sep)
-    namespace = split[-1]
-    split[-1] = "_" + namespace + ".scss"
+    namespace = '-'.join(split)
+    filename = split[-1]
+    split[-1] = "_" + filename + ".scss"
     style = os.path.join("assets", "lib", "styles", "site", os.sep.join(split))
     _build(view.split(os.sep), directory)
     _build(style.split(os.sep), directory)

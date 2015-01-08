@@ -21,5 +21,15 @@ class StartViewTest(unittest.TestCase):
             styles = scss.read()
             self.assertTrue('@import "site/home"' in styles)
 
+    def test_nested_namespace(self):
+        generate_view(self.BASE_DIR, 'project/home')
+        self.assertTrue(os.path.exists(os.path.join(self.BASE_DIR, 'assets', 'app', 'views', 'project', 'home.html')))
+        self.assertTrue(
+            os.path.exists(os.path.join(self.BASE_DIR, 'assets', 'lib', 'styles', 'site', 'project', '_home.scss')))
+        with open(os.path.join(self.BASE_DIR, 'assets', 'lib', 'styles', 'styles.scss'), 'r') as scss:
+            styles = scss.read()
+            self.assertTrue('@import "site/project/home"' in styles)
+
+
     def tearDown(self):
         shutil.rmtree(os.path.join(self.BASE_DIR, 'assets'))
