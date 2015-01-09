@@ -37,12 +37,14 @@ def add_route(directory, when=None, controller=None, template=None, resolves=Non
         template = raw_input("Template (relative to views folder): ")
     template_name = template
     if not template_name.endswith('.html'):
-        template_name += '.html'
-    template = '/static/app/views/' + template
-    if not os.path.exists(os.path.join(directory, 'assets', 'app', 'views', template_name)):
+        template_html = template_name + '.html'
+    else:
+        template_html = template_name
+    template = '/static/app/views/' + template_html
+    if not os.path.exists(os.path.join(directory, 'assets', 'app', 'views', template_html)):
         generate_view(directory, template_name)
     else:
-        print "Using Template: %s" % os.path.join(directory, 'assets', 'app', 'views', template_name)
+        print "Using Template: %s" % os.path.join(directory, 'assets', 'app', 'views', template_html)
     if resolves is None:
         resolve_input = True
         resolves = []
