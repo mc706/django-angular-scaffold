@@ -30,7 +30,7 @@ def add_route(directory, when=None, controller=None, template=None, resolves=Non
         controller = raw_input("Controller: ")
     if not os.path.exists(os.path.join(directory, 'assets', 'controllers', controller + "Controller.js")):
         generate_controller(directory, controller)
-        controller = controller.title + "Controller"
+        controller = controller.title() + "Controller"
     else:
         print "Using Controller: %s" % os.path.join(directory, 'assets', 'controllers', controller + "Controller.js")
     if not template:
