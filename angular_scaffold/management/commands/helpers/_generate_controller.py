@@ -10,5 +10,8 @@ _template = Template("""app.controller("${name}Controller", function ($$scope, $
 def generate_controller(directory, name):
     controller = os.path.join("app", "controllers", name.lower() + "Controller.js")
     title = name.title()
-    with open(os.path.join(directory, 'assets', controller), 'w') as f:
-        f.write(_template.substitute(name=title))
+    if not os.path.exists(os.path.join(directory, 'assets', controller)):
+        with open(os.path.join(directory, 'assets', controller), 'w') as f:
+            f.write(_template.substitute(name=title))
+    else:
+        print "Controller Already Exists: %s" % controller

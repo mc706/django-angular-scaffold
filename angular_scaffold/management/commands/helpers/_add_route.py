@@ -2,6 +2,10 @@ import os
 import re
 from string import Template
 
+from _generate_view import generate_view
+from _generate_controller import generate_controller
+
+
 _route = Template(""".when('${when}',
         {
             controller: '${controller}',
@@ -24,9 +28,18 @@ def add_route(directory, when=None, controller=None, template=None, resolves=Non
         when = raw_input("When: ")
     if not controller:
         controller = raw_input("Controller: ")
+    if not os.path.exists(os.path.join(directory, 'assets', 'controllers', controller + "Controller.js")):
+        generate_controller(directory, controller)
+    else:
+        print "Using Controller: %s" % os.path.join(directory, 'assets', 'controllers', controller + "Controller.js")
     if not template:
         template = raw_input("Template (relative to views folder): ")
+    template_name = template
     template = '/static/app/views/' + template
+    if not os.path.exists(os.path.join(directory, 'assets', 'app', 'views', template_name)):
+        generate_view(directory, template_name)
+    else:
+        print "Using Template: %s" % os.path.join(directory, 'assets', 'app', 'views', template_name)
     if resolves is None:
         resolve_input = True
         resolves = []
@@ -51,5 +64,7 @@ def add_route(directory, when=None, controller=None, template=None, resolves=Non
         data = route_file.read()
         routes = re.findall(route_regex, data, re.DOTALL)
     routes.append(new_route)
+    organized_routes = routes
+    # TODO: organize routes by route complexity and group them
     with open(os.path.join(directory, 'assets', 'app', 'config', 'routes.js'), 'w') as route_file:
-        route_file.write(_header + ''.join(routes) + _footer)
+        route_file.write(_header + ''.join(organized_routes) + _footer)

@@ -32,16 +32,22 @@ def generate_view(directory, name=None):
     filename = split[-1]
     split[-1] = "_" + filename + ".scss"
     style = os.path.join("assets", "lib", "styles", "site", os.sep.join(split))
-    _build(view.split(os.sep), directory)
-    _build(style.split(os.sep), directory)
 
     # view html file
-    with open(os.path.join(directory, view), 'w') as f:
-        f.write("<div class='page %s'>\n\n</div>" % namespace)
+    if not os.path.exists(os.path.join(directory, view)):
+        _build(view.split(os.sep), directory)
+        with open(os.path.join(directory, view), 'w') as f:
+            f.write("<div class='page %s'>\n\n</div>" % namespace)
+    else:
+        print "View Template Already Exists: %s" % namespace
 
     # styles file
-    with open(os.path.join(directory, style), 'w') as f:
-        f.write(".page.%s{\n\n}" % namespace)
+    if not os.path.exists(os.path.join(directory, style)):
+        _build(style.split(os.sep), directory)
+        with open(os.path.join(directory, style), 'w') as f:
+            f.write(".page.%s{\n\n}" % namespace)
+    else:
+        print "View Styles Already Exists: %s" % style
 
     # import styles styles
     with open(os.path.join(directory, 'assets', 'lib', 'styles', 'styles.scss'), 'a') as styles:
