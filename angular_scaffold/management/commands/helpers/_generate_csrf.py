@@ -3,10 +3,10 @@ import os
 from angular_scaffold.management.commands.helpers._update_dependencies import update_dependencies
 
 
-_csrf = """app.run(function ($http, $cookies) {
+_csrf = """app.run(["$http", "$cookies", function ($http, $cookies) {
     "use strict";
     $http.defaults.headers.common['X-CSRFToken'] = $cookies.csrftoken;
-});"""
+}]);"""
 
 
 def generate_csrf(directory):

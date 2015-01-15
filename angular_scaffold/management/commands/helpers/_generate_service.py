@@ -68,7 +68,7 @@ def generate_service(directory, name=None, url=None, plural=None):
     endpoints = []
     service = os.path.join("app", "services", name.lower() + "Service.js")
     with open(os.path.join(directory, 'assets', service), 'w') as f:
-        f.write("""app.service('%sService', function ($http, $q) {
+        f.write("""app.service('%sService', ["$http", "$q", function ($http, $q) {
     'use strict';
     return {
 """ % name.title())
@@ -101,4 +101,4 @@ def generate_service(directory, name=None, url=None, plural=None):
         f.write(',\n'.join(endpoints))
         f.write("""\n
     };
-});""")
+}]);""")

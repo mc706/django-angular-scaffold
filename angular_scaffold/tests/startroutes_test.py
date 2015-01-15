@@ -19,7 +19,7 @@ class StartRouteTest(unittest.TestCase):
             os.path.exists(os.path.join(self.BASE_DIR, 'assets', 'app', 'config', 'routes.js')))
         with open(os.path.join(self.BASE_DIR, 'assets', 'app', 'config', 'routes.js'), 'r') as js:
             routes = js.read()
-            self.assertTrue('app.config(function ($routeProvider) {' in routes)
+            self.assertTrue('app.config(["$routeProvider", function ($routeProvider) {' in routes)
 
     def tearDown(self):
         shutil.rmtree(os.path.join(self.BASE_DIR, 'assets'))

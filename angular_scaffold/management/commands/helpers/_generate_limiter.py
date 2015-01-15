@@ -1,7 +1,7 @@
 import os
 
 
-_limiter = """app.run(function ($rootScope, $log) {
+_limiter = """app.run(["$rootScope", "$log", function ($rootScope, $log) {
     "use strict";
     $rootScope.limiter = {};
     $rootScope.limit = 1000; // 1 second
@@ -15,7 +15,7 @@ _limiter = """app.run(function ($rootScope, $log) {
         }
         $rootScope.limiter[key] = new Date().getTime();
     };
-});"""
+}]);"""
 
 _docs = """#Rate Limiter
 

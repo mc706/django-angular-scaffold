@@ -8,7 +8,7 @@ def generate_debugger(directory, password):
     logger_file = os.path.join(directory, 'assets', 'app', 'config', 'logger.js')
     print "Creating: " + logger_file
     with open(logger_file, 'w') as f:
-        f.write("""app.config(function ($logProvider) {
+        f.write("""app.config(["$logProvider", function ($logProvider) {
     "use strict";
     //Enables debug when ?debug=1&password=*password*
     var password = "%s",
@@ -26,7 +26,7 @@ def generate_debugger(directory, password):
             console.log = function () {};
         }
     }
-});
+}]);
 """ % password_hash)
     _debugger_docs = """#Logging
 

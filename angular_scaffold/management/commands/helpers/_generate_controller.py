@@ -1,10 +1,14 @@
 import os
 from string import Template
 
-_template = Template("""app.controller("${name}Controller", function ($$scope, $$location, $$log) {
-    'use strict';
-    $$log.debug("${name} Controller Initialized");
-});""")
+_template = Template("""app.controller("${name}Controller", [
+    "$$scope",
+    "$$location",
+    "$$log",
+    function ($$scope, $$location, $$log) {
+        'use strict';
+        $$log.debug("${name} Controller Initialized");
+    }]);""")
 
 
 def generate_controller(directory, name):

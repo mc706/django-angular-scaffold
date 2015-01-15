@@ -3,7 +3,7 @@ import os
 from angular_scaffold.management.commands.helpers._update_dependencies import update_dependencies
 
 
-_routes = """app.config(function ($routeProvider) {
+_routes = """app.config(["$routeProvider", function ($routeProvider) {
     "use strict";
     $routeProvider.when('/',
         {
@@ -12,7 +12,7 @@ _routes = """app.config(function ($routeProvider) {
             resolve: {}
         })
         .otherwise({redirectTo: '/'});
-});"""
+}]);"""
 
 
 def generate_routes(directory):
