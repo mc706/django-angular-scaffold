@@ -12,6 +12,9 @@ _assets = {
         "directives": {
             ".gitkeep": ".gitkeep"
         },
+        "filters": {
+            ".gitkeep": ".gitkeep"
+        },
         "services": {
             ".gitkeep": '.gitkeep'
         },
