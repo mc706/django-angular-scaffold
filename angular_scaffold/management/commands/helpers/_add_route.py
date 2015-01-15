@@ -69,6 +69,7 @@ def add_route(directory, when=None, controller=None, template=None, resolves=Non
         data = route_file.read()
         routes = re.findall(route_regex, data, re.DOTALL)
     routes.append(new_route)
+    print routes
     organized_routes = routes
     # TODO: organize routes by route complexity and group them
     with open(os.path.join(directory, 'assets', 'app', 'config', 'routes.js'), 'w') as route_file:
