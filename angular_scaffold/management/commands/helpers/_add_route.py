@@ -3,8 +3,8 @@ import re
 import sys
 from string import Template
 
-from _generate_view import generate_view
-from _generate_controller import generate_controller
+from ._generate_view import generate_view
+from ._generate_controller import generate_controller
 
 
 _route = Template(""".when('${when}',
