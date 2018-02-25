@@ -11,8 +11,8 @@ _csrf = """app.run(["$http", "$cookies", function ($http, $cookies) {
 
 def generate_csrf(directory):
     filename = os.path.join(directory, 'assets', 'app', 'config', 'csrf.js')
-    print "Creating: " + filename
+    print("Creating: " + filename)
     with open(filename, 'w') as f:
         f.write(_csrf)
-    print "Injecting cookie dependency"
+    print("Injecting cookie dependency")
     update_dependencies(directory, 'ngCookies')

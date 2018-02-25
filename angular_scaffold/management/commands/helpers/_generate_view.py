@@ -1,4 +1,5 @@
 import os
+import sys
 
 
 def _touch(fname):
@@ -25,7 +26,10 @@ def _build(path, pwd=None):
 
 def generate_view(directory, name=None):
     if not name:
-        name = raw_input('View Name: ')
+        if (sys.version_info > (3, 0)):
+            name = raw_input('View Name: ')
+        else:
+            name = raw_input('View Name: ')
     view = os.path.join("assets", "app", "views", name + ".html")
     split = name.split(os.sep)
     namespace = '-'.join(split)
@@ -39,7 +43,7 @@ def generate_view(directory, name=None):
         with open(os.path.join(directory, view), 'w') as f:
             f.write("<div class='page %s'>\n\n</div>" % namespace)
     else:
-        print "View Template Already Exists: %s" % namespace
+        print("View Template Already Exists: %s" % namespace)
 
     # styles file
     if not os.path.exists(os.path.join(directory, style)):
@@ -47,8 +51,9 @@ def generate_view(directory, name=None):
         with open(os.path.join(directory, style), 'w') as f:
             f.write(".page.%s{\n\n}" % namespace)
     else:
-        print "View Styles Already Exists: %s" % style
+        print("View Styles Already Exists: %s" % style)
 
     # import styles styles
-    with open(os.path.join(directory, 'assets', 'lib', 'styles', 'styles.scss'), 'a') as styles:
+    with open(os.path.join(directory, 'assets', 'lib', 'styles', 'styles.scss'),
+              'a') as styles:
         styles.write('\n@import "site/%s";' % name)

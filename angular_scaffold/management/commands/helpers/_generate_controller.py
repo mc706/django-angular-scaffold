@@ -18,4 +18,4 @@ def generate_controller(directory, name):
         with open(os.path.join(directory, 'assets', controller), 'w') as f:
             f.write(_template.substitute(name=title))
     else:
-        print "Controller Already Exists: %s" % controller
+        print("Controller Already Exists: %s" % controller)

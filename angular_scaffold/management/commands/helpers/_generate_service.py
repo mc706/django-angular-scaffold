@@ -1,4 +1,7 @@
 import os
+import sys
+
+
 from string import Template
 
 _template = Template("""        ${name}${title}: function (${args}) {
@@ -59,12 +62,20 @@ _endpoints = [
 
 
 def generate_service(directory, name=None, url=None, plural=None):
-    if not name:
-        name = raw_input("Service Name: ")
-    if not url:
-        url = raw_input("Endpoint URL: ")
-    if not plural:
-        plural = raw_input("Plural Form: ")
+    if (sys.version_info > (3, 0)):
+        if not name:
+            name = input("Service Name: ")
+        if not url:
+            url = input("Endpoint URL: ")
+        if not plural:
+            plural = input("Plural Form: ")
+    else:
+        if not name:
+            name = raw_input("Service Name: ")
+        if not url:
+            url = raw_input("Endpoint URL: ")
+        if not plural:
+            plural = raw_input("Plural Form: ")
     endpoints = []
     service = os.path.join("app", "services", name.lower() + "Service.js")
     with open(os.path.join(directory, 'assets', service), 'w') as f:

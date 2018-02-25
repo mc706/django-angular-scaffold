@@ -6,7 +6,7 @@ def generate_debugger(directory, password):
     m.update(password)
     password_hash = m.hexdigest()
     logger_file = os.path.join(directory, 'assets', 'app', 'config', 'logger.js')
-    print "Creating: " + logger_file
+    print("Creating: " + logger_file)
     with open(logger_file, 'w') as f:
         f.write("""app.config(["$logProvider", function ($logProvider) {
     "use strict";

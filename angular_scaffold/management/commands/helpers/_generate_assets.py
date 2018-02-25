@@ -1,4 +1,5 @@
 import os
+import sys
 
 
 _assets = {
@@ -68,7 +69,10 @@ def generate_assets(directory, app_name=None):
     _build(_assets, os.path.join(directory, 'assets'))
     # setup angular application
     if not app_name:
-        app_name = raw_input("Angular Application Name: ")
+        if (sys.version_info > (3, 0)):
+            app_name = input("Angular Application Name: ")
+        else:
+            app_name = raw_input("Angular Application Name: ")
     with open(os.path.join(directory, 'assets', 'app', 'app.js'), 'w') as app:
         app.write('var app = angular.module("%s", []);' % app_name)
     # setup styles

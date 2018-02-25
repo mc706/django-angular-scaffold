@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 from string import Template
 
 from _generate_view import generate_view
@@ -24,17 +25,26 @@ _footer = """.otherwise({redirectTo: '/'});
 
 
 def add_route(directory, when=None, controller=None, template=None, resolves=None):
-    if not when:
-        when = raw_input("When: ")
-    if not controller:
-        controller = raw_input("Controller: ")
+    if (sys.version_info > (3, 0)):
+        if not when:
+            when = input("When: ")
+        if not controller:
+            controller = input("Controller: ")
+    else:
+        if not when:
+            when = raw_input("When: ")
+        if not controller:
+            controller = raw_input("Controller: ")
     if not os.path.exists(os.path.join(directory, 'assets', 'controllers', controller + "Controller.js")):
         generate_controller(directory, controller)
         controller = controller.title() + "Controller"
     else:
-        print "Using Controller: %s" % os.path.join(directory, 'assets', 'controllers', controller + "Controller.js")
+        print("Using Controller: %s" % os.path.join(directory, 'assets', 'controllers', controller + "Controller.js"))
     if not template:
-        template = raw_input("Template (relative to views folder): ")
+        if (sys.version_info > (3, 0)):
+            template = input("Template (relative to views folder): ")
+        else:
+            template = raw_input("Template (relative to views folder): ")
     template_name = template
     if not template_name.endswith('.html'):
         template_html = template_name + '.html'
@@ -44,12 +54,15 @@ def add_route(directory, when=None, controller=None, template=None, resolves=Non
     if not os.path.exists(os.path.join(directory, 'assets', 'app', 'views', template_html)):
         generate_view(directory, template_name)
     else:
-        print "Using Template: %s" % os.path.join(directory, 'assets', 'app', 'views', template_html)
+        print("Using Template: %s" % os.path.join(directory, 'assets', 'app', 'views', template_html))
     if resolves is None:
         resolve_input = True
         resolves = []
         while resolve_input:
-            resolve_input = raw_input("Resolve: ")
+            if (sys.version_info > (3, 0)):
+                resolve_input = input("Resolve: ")
+            else:
+                resolve_input = raw_input("Resolve: ")
             if resolve_input:
                 resolves.append(resolve_input)
     if resolves:

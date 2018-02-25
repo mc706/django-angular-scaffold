@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 
 from angular_scaffold.management.commands.helpers._generate_controller import generate_controller
+import sys
 
 
 class Command(BaseCommand):
@@ -14,7 +15,10 @@ class Command(BaseCommand):
         else:
             directory = '.'
         if not args:
-            controller_name = raw_input("Name of the controller: ")
+            if (sys.version_info > (3, 0)):
+                controller_name = input("Name of the controller: ")
+            else:
+                controller_name = raw_input("Name of the controller: ")
             generate_controller(directory, controller_name)
             self.stdout.write('Successfully initialized controller "%s"' % controller_name)
         else:
