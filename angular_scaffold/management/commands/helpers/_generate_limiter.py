@@ -34,7 +34,7 @@ In a service, you can call `$rootScope.checkLimiter(defer, key, optional_time)`.
 
 def generate_limiter(directory):
     filename = os.path.join(directory, 'assets', 'app', 'config', 'limiter.js')
-    print "Creating: " + filename
+    print("Creating: " + filename)
     with open(filename, 'w') as f:
         f.write(_limiter)
     if not os.path.exists(os.path.join(directory, 'docs')):

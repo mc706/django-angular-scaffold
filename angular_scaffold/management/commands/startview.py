@@ -1,7 +1,9 @@
 from django.core.management.base import BaseCommand
 from django.conf import settings
 
-from angular_scaffold.management.commands.helpers._generate_view import generate_view
+from angular_scaffold.management.commands.helpers._generate_view import \
+    generate_view
+import sys
 
 
 class Command(BaseCommand):
@@ -14,10 +16,14 @@ class Command(BaseCommand):
         else:
             directory = '.'
         if not args:
-            view_name = raw_input("View Name: ")
+            if (sys.version_info > (3, 0)):
+                view_name = input("View Name: ")
+            else:
+                view_name = raw_input("View Name: ")
             generate_view(directory, view_name)
             self.stdout.write('Successfully initialized view "%s"' % view_name)
         else:
             for view_name in args:
                 generate_view(directory, view_name)
-                self.stdout.write('Successfully initialized view "%s"' % view_name)
+                self.stdout.write('Successfully initialized view "%s"' %
+                                  view_name)

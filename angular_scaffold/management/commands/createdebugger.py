@@ -1,7 +1,9 @@
 from django.core.management.base import BaseCommand
 from django.conf import settings
 
-from angular_scaffold.management.commands.helpers._generate_debugger import generate_debugger
+from angular_scaffold.management.commands.helpers._generate_debugger import \
+    generate_debugger
+import sys
 
 
 class Command(BaseCommand):
@@ -15,7 +17,10 @@ class Command(BaseCommand):
         else:
             path = '.'
         if not args:
-            password = raw_input("Password: ")
+            if (sys.version_info > (3, 0)):
+                password = input("Password: ")
+            else:
+                password = raw_input("Password: ")
             generate_debugger(path, password)
         else:
             for password in args:

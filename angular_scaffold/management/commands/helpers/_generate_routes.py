@@ -17,8 +17,8 @@ _routes = """app.config(["$routeProvider", function ($routeProvider) {
 
 def generate_routes(directory):
     filename = os.path.join(directory, 'assets', 'app', 'config', 'routes.js')
-    print "Creating: " + filename
+    print("Creating: " + filename)
     with open(filename, 'w') as f:
         f.write(_routes)
-    print "Injecting route dependency"
+    print("Injecting route dependency")
     update_dependencies(directory, 'ngRoute')
