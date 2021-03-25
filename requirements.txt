@@ -1,5 +1,5 @@
 Django==1.7.1
-PyYAML==3.11
+PyYAML==5.4
 cov-core==1.15.0
 coverage==3.7.1
 py==1.4.26
